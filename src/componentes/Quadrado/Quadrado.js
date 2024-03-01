@@ -1,37 +1,55 @@
 import React from "react";
-import { View } from "neact-native";
+import { View, StyleSheet } from "react-native";
 
-const QuadradoPequeno = () => {
-    return(
-        <View style ={{...styles.pequeno, 
-        }} />
-    )
+const QuadradoPequeno = ({ cor }) => {
+    return (
+        <View style={{ ...styles.pequeno, backgroundColor: cor }} />
+    );
 }
 
-const QuadradoMedio = (props) => {
-    const { lado } = props;
-    <View styles={{
-        width: 100,
-        heigth: 100,
-        backgroudColor: 'red'
-    }} />
+const QuadradoMedio = ({ cor }) => {
+    return (
+        <View style={{ ...styles.medio, backgroundColor: cor }} />
+    );
 }
-const QuadradoGrande = () => {
-     
-}
+
+const QuadradoGrande = ({ cor }) => {
+    return (
+        <View style={{ ...styles.grande, backgroundColor: cor }} />
+    );
+};
+
+const Quadrado = () => {
+    return (
+        <View style={styles.container}>
+            <QuadradoPequeno cor={"pink"} />
+            <QuadradoMedio cor={"violet"} />
+            <QuadradoGrande cor={"purple"} />
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%'
-        heigth: '100%'
-        flexDirection: 'row'
-
+        flex: 1,
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "stretch"
     },
-    pequeno:{
+    pequeno: {
         width: '50%',
-        heigth: '50%'
+        height: '50%',
         flexDirection: 'row'
-
-
+    },
+    medio: {
+        width: 100,
+        height: 100,
+        backgroundColor: 'red'
+    },
+    grande: {
+        flex: 1,
+        backgroundColor: 'blue'
     }
-})
+});
+
+export default Quadrado;
